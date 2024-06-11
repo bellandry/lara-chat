@@ -94,7 +94,7 @@ const ChatLayout = ({ children }) => {
     <>
       <div className='flex-1 w-full flex overflow-hidden'>
         <div
-          className={`transition-all w-full sm:w-[220px] md:w-[300px] dark:text-gray-300 dark:bg-gray-950 bg-gray-400 flex flex-col
+          className={`transition-all w-full h-screen sm:w-[220px] md:w-[300px] dark:text-gray-300 dark:bg-gray-950 bg-gray-400 flex flex-col
           ${selectedConversation ? "-ml-[100%] sm:ml-0" : ""}`}
         >
           <div className='flex items-center justify-between py-2 px-3 text-xl font-medium'>

@@ -2,6 +2,7 @@ import { Link, usePage } from "@inertiajs/react"
 import GroupAvatar from "./GroupAvatar"
 import UserAvatar from "./UserAvatar"
 import UserOptionsDropdown from "./UserOptionsDropdown"
+import { formatDate } from "./helpers/format-date"
 
 const ConversationItem = ({ conversation, selectedConversation, online = null }) => {
   const page = usePage()
@@ -36,7 +37,7 @@ const ConversationItem = ({ conversation, selectedConversation, online = null })
           </h3>
           {conversation.last_message_date && (
             <span className='text-nowrap'>
-              {MessageChannel.last_message_date}
+              {formatDate(conversation.last_message_date)}
             </span>
           )}
         </div>
