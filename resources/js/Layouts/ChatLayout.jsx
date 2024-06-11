@@ -37,7 +37,7 @@ const ChatLayout = ({ children }) => {
         }
       })
     )
-  }, [sortedConversations])
+  }, [localConversations])
 
   useEffect(() => {
     setLocalConversations(conversations)
@@ -80,9 +80,9 @@ const ChatLayout = ({ children }) => {
   const onSearch = (e) => {
     const search = e.target.value.toLowerCase()
     setLocalConversations(
-      conversations.filter((conversation) => {
+      conversations.filter((conversations) => {
         return (
-          conversation.name.toLowerCase().includes(search)
+          conversations.name.toLowerCase().includes(search)
         )
       })
     )

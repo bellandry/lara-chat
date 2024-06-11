@@ -67,7 +67,7 @@ class MessageController extends Controller
 
     public function store(StoreMessageRequest $request)
     {
-        $date = $request->validated();
+        $data = $request->validated();
         $data['sender_id'] = auth()->id();
         $recieverId = $data['reciever_id'] ?? null;
         $groupId = $data['group_id'] ?? null;

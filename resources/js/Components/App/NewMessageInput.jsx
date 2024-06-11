@@ -5,7 +5,7 @@ const NewMessageInput = ({ value, onChange, onSend = null }) => {
 
   const onInputKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
-      e.prevent.default()
+      e.preventDefault()
       onSend()
     }
   }

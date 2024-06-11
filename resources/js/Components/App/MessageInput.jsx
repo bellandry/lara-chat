@@ -2,10 +2,42 @@ import { FaceSmileIcon, HandThumbUpIcon, PaperAirplaneIcon, PaperClipIcon, Photo
 import { useState } from "react"
 import NewMessageInput from "./NewMessageInput"
 
-const MessageInput = () => {
+const MessageInput = ({ conversation }) => {
   const [newMessage, setNewMessage] = useState("")
   const [inputErrorMessage, setInputErrorMessage] = useState("")
   const [messageSending, setMessageSending] = useState(false)
+
+  const onSendClick = () => {
+    if (newMessage.trim() === "") {
+      setInputErrorMessage("vous ne pouvez pas envoyer de message vide !")
+
+      setTimeout(() => {
+        setInputErrorMessage("")
+      }, 5000)
+      return
+    }
+    const formData = new FormData()
+    formData.append("message", newMessage)
+    if (conversation.is_user) {
+      formData.append('reciever_id', conversation.id)
+    } else if (conversation.is_group) {
+      formData.append('group_id', conversation.id)
+    }
+
+    setMessageSending(true)
+    axios.post(route('message.store'), formData, {
+      uploadProgress: (ProgressEvent) => {
+        const progress = Math.round(
+          (ProgressEvent.loaded / ProgressEvent.total) * 100
+        )
+      }
+    }).then((res) => {
+      setNewMessage("")
+      setMessageSending(false)
+    }).catch((err) => {
+      setMessageSending(false)
+    })
+  }
 
   return (
     <>
@@ -33,9 +65,10 @@ const MessageInput = () => {
           <div className="flex">
             <NewMessageInput
               value={newMessage}
+              onSend={onSendClick}
               onChange={(e) => setNewMessage(e.target.value)}
             />
-            <button className="btn rounded-l-none bg-gray-950">
+            <button onClick={onSendClick} className="btn rounded-l-none bg-gray-950">
               {messageSending ? (
                 <span className="loading loading-dots loading-md"></span>
               ) : (

@@ -17,7 +17,6 @@ const ConversationItem = ({ conversation, selectedConversation, online = null })
       classes = " border-blue-600 bg-slate-950/30 text-gray-100/80 dar:text-gray-300 dark:bg-slate-800"
     }
   }
-  console.log(conversation)
 
   return (
     <Link
