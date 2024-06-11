@@ -11,10 +11,10 @@ const ConversationItem = ({ conversation, selectedConversation, online = null })
 
   if (selectedConversation) {
     if (!selectedConversation.is_group && !conversation.is_group && selectedConversation.id == conversation.id) {
-      classes = " border-blue-600 bg-slate-950/70"
+      classes = " border-blue-600 bg-slate-950/30 text-gray-100/80 dar:text-gray-300 dark:bg-slate-800"
     }
     if (selectedConversation.is_group && conversation.is_group && selectedConversation.id == conversation.id) {
-      classes = " border-blue-600 bg-slate-950/70"
+      classes = " border-blue-600 bg-slate-950/30 text-gray-100/80 dar:text-gray-300 dark:bg-slate-800"
     }
   }
   console.log(conversation)
@@ -47,7 +47,7 @@ const ConversationItem = ({ conversation, selectedConversation, online = null })
           </p>
         )}
       </div>
-      {currentUser.is_admin && conversation.is_user && (
+      {!!currentUser.is_admin && !!conversation.is_user && (
         <UserOptionsDropdown conversation={conversation} />
       )}
     </Link>

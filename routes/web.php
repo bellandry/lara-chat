@@ -10,10 +10,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/test', [HomeController::class, 'home'])->name('dash');
 
 
-    Route::get('/user/{user}', function () {
-    })->name('chat.user');
-    Route::post('/user/{user}', function () {
-    })->name('chat.group');
+    Route::get('/user/{user}', [MessageController::class, 'byUser'])->name('chat.user');
+    Route::get('/group/{group}', [MessageController::class, 'byGroup'])->name('chat.group');
 
     Route::post('/message', [MessageController::class, 'store'])->name('message.store');
     Route::get('/message/older/{message}', [MessageController::class, 'loadOlderMessages'])->name('message.loadOlder');

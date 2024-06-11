@@ -88,13 +88,11 @@ const ChatLayout = ({ children }) => {
     )
   }
 
-  console.log(sortedConversations)
-
   return (
     <>
-      <div className='flex-1 w-full flex overflow-hidden'>
+      <div className='flex-1 w-full flex h-full overflow-hidden'>
         <div
-          className={`transition-all w-full h-screen sm:w-[220px] md:w-[300px] dark:text-gray-300 dark:bg-gray-950 bg-gray-400 flex flex-col
+          className={`transition-all w-full h-full sm:w-[220px] md:w-[300px] dark:text-gray-300 dark:bg-gray-950 bg-gray-400 flex flex-col
           ${selectedConversation ? "-ml-[100%] sm:ml-0" : ""}`}
         >
           <div className='flex items-center justify-between py-2 px-3 text-xl font-medium'>
@@ -115,7 +113,7 @@ const ChatLayout = ({ children }) => {
               className='w-full text-sm'
             />
           </div>
-          <div className="flex-1 overflow-auto">
+          <div className="flex-1 overflow-y-auto">
             {sortedConversations && sortedConversations.map((conversation) => (
               <ConversationItem
                 key={`${conversation.is_group ? 'group_' : 'user_'}${conversation.id}`}
@@ -127,7 +125,7 @@ const ChatLayout = ({ children }) => {
             }
           </div>
         </div>
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex-1 h-full flex-col">
           {children}
         </div>
       </div>
