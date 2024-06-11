@@ -33,7 +33,7 @@ const UserOptionsDropdown = ({ conversation }) => {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="flex justify-center items-center w-8 h-8 rounded-full hover:bg-gray-950/75">
+        <Menu.Button className="flex justify-center items-center w-8 h-8 rounded-full hover:bg-gray-800/30 hover:text-gray-200 dark:hover:bg-gray-950/75">
           <EllipsisVerticalIcon className="w-5 h-5" />
         </Menu.Button>
       </div>
