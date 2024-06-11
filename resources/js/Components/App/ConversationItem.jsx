@@ -22,7 +22,7 @@ const ConversationItem = ({ conversation, selectedConversation, online = null })
     <Link
       href={conversation.is_group ? route("chat.group", conversation) : route('chat.user', conversation)}
       preserveState
-      className={`conversation-item flex items-center gap-2 p-2 text-gray-300 transition-all cursor-pointer border-1-4 hover:bg-gray-950/80 
+      className={`conversation-item flex items-center gap-2 p-2 text-gray-800 dark:text-gray-300 transition-all cursor-pointer border-1-4 hover:bg-gray-950/80 
       ${classes} ${conversation.is_user && conversation.is_admin ? 'pr-2' : 'pr-4'}`}
     >
       {conversation.is_user && (

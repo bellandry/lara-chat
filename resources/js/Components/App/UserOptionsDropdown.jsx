@@ -1,14 +1,33 @@
 import { Menu, Transition } from "@headlessui/react"
 import { EllipsisVerticalIcon, LockClosedIcon, LockOpenIcon, ShieldCheckIcon, UserIcon } from '@heroicons/react/24/solid'
+import axios from "axios"
 import { Fragment } from "react"
 
 const UserOptionsDropdown = ({ conversation }) => {
 
   const onBlockUser = () => {
-
+    if (!conversation.is_user) {
+      return
+    }
+    axios.post(route(user.blockUnblock), conversation.id)
+      .then((res) => {
+        console.log(err)
+      })
+      .catch((err) => {
+        console.log(err)
+      });
   }
   const changeUserRole = () => {
-
+    if (conversation.is_user) {
+      return
+    }
+    axios.post(route('user.changeRole', conversation.id))
+      .then((res) => {
+        console.log(res.data)
+      })
+      .catch((err) => {
+        console.log(err)
+      })
   }
 
   return (

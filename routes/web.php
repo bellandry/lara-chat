@@ -6,11 +6,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [HomeController::class, 'home'])->name('dashboard');
+    Route::get('/test', [HomeController::class, 'home'])->name('dash');
 
     Route::get('/user/{user}', function () {
     })->name('chat.user');
 
-    Route::get('/group/{group}', function () {
+    Route::post('/user/{user}', function () {
     })->name('chat.group');
 });
 
