@@ -42,7 +42,7 @@ export function formatDateBubble(date) {
   const formattedDate = `${day}/${month}/${year}`;
 
   if (diffInDays === 0) {
-    return `Aujourd'hui à ${hours}h${minutes}`;
+    return `${hours}h${minutes}`;
   } else if (diffInDays === 1) {
     return `Hier à ${hours}h${minutes}`;
   } else {
